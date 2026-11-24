@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LÖVUSHKINA OLYA — AI Director &amp; Filmmaker</title>
+<meta name="description" content="Olya Lövushkina — AI director and filmmaker. Films, animation, music videos and series made with AI, from concept and script to the finished film.">
+<meta property="og:title" content="LÖVUSHKINA OLYA — AI Director & Filmmaker">
+<meta property="og:description" content="Films, animation, music videos and series made with AI.">
+<meta property="og:image" content="assets/img/og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#750608">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#750608; --red-deep:#5a0406; --blue:#74A5BE; --white:#FFFFFF;
+  --pad:clamp(20px,4vw,56px);
+  --display:Anton,Oswald,Impact,sans-serif;
+  --label:Oswald,"Arial Narrow",sans-serif;
+  --body:Inter,system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--red);color:var(--white);font-family:var(--body);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.label{font-family:var(--label);font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:14px}
+.h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(48px,7vw,104px);line-height:1}
+.pill{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;border-radius:48px;text-decoration:none;font-family:var(--label);font-weight:700;letter-spacing:.12em;font-size:15px;text-transform:uppercase;border:2px solid currentColor;transition:background .2s,color .2s}
+.pill--solid{background:var(--white);color:var(--red);border-color:var(--white)}
+.pill--solid:hover{background:var(--blue);border-color:var(--blue)}
+.pill--line:hover{background:var(--white);color:var(--red)}
+.play{flex-shrink:0}
+
+/* Ö built from O + two square dots, kept at cap height */
+.o-uml{position:relative;display:inline-block;line-height:1;color:var(--blue)}
+.o-uml>span{display:inline-block;transform:scaleY(.78);transform-origin:50% .9236em}
+.o-uml::before,.o-uml::after{content:"";position:absolute;top:.0646em;width:.14em;height:.14em;background:var(--blue)}
+.o-uml::before{left:.0682em}.o-uml::after{left:.2782em}
+
+/* HEADER */
+.header{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px var(--pad)}
+.logo{font-family:var(--display);font-size:26px;letter-spacing:1px;text-decoration:none}
+.nav{display:flex;align-items:center;gap:28px;font-family:var(--label);font-weight:500;font-size:15px;letter-spacing:.14em;text-transform:uppercase}
+.nav a{text-decoration:none}
+.nav a:hover{color:var(--blue)}
+.lang{display:flex;border:1px solid var(--white);border-radius:40px;overflow:hidden}
+.lang button{min-height:36px;padding:8px 14px;border:0;background:transparent;color:var(--white);font-family:var(--label);font-size:13px;letter-spacing:.14em;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--white);color:var(--red)}
+.menu-btn{display:none;min-height:44px;min-width:44px;align-items:center;justify-content:center;border:1px solid var(--white);border-radius:40px;background:transparent;color:var(--white);cursor:pointer}
+@media (max-width:820px){
+  .nav-links{display:none;position:absolute;top:76px;left:var(--pad);right:var(--pad);flex-direction:column;align-items:stretch;gap:0;background:var(--red);border:1px solid var(--white);border-radius:20px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.25)}
+  .nav-links a:last-child{border-bottom:0}
+  .menu-btn{display:inline-flex}
+  .nav{gap:12px}
+}
+@media (min-width:821px){.nav-links{display:flex;gap:28px}}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;height:100svh;min-height:640px;max-height:1100px;background:#7B0104}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero::before{content:"";position:absolute;inset:0 0 auto 0;height:160px;background:linear-gradient(to bottom,rgba(30,3,4,.55),rgba(30,3,4,0));z-index:1}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:58%;background:linear-gradient(to top,rgba(30,3,4,.82),rgba(30,3,4,0));z-index:1}
+.hero__content{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(28px,5vh,48px);z-index:2;display:flex;flex-direction:column;gap:10px}
+.hero__row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+.hero__left{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
+.hero__role{font-family:var(--label);font-weight:500;font-size:clamp(20px,2vw,30px);letter-spacing:.14em;text-transform:uppercase}
+.hero__line{margin:0;max-width:360px;font-size:15px;line-height:1.5}
+.hero__name{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(52px,12.4vw,196px);line-height:.92;letter-spacing:-1px}
+@media (max-width:760px){.hero__line{display:none}.hero__img{object-position:58% 30%}}
+
+/* WORKS */
+.works{padding-top:120px;padding-bottom:40px;display:flex;flex-direction:column;gap:40px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 32px}
+@media (max-width:1080px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.grid{grid-template-columns:minmax(0,1fr);gap:32px}}
+.card{display:flex;flex-direction:column;gap:14px;text-decoration:none}
+.card__media{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+.card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .5s ease}
+.card__media::after{content:"";position:absolute;inset:0;z-index:-1}
+.card:hover .card__media img{transform:scale(1.04)}
+.card--red .card__media{border:1px solid var(--white)}
+.card--red .card__media::after{background:rgba(117,6,8,.3)}
+.card--blue .card__media::after{background:rgba(116,165,190,.25)}
+.card--white .card__media::after{background:rgba(255,255,255,.2)}
+.card--red .play{color:var(--white)}.card--blue .play,.card--white .play{color:var(--red)}
+.card__top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.card__title{font-family:var(--label);font-weight:700;font-size:22px;letter-spacing:.05em;text-transform:uppercase}
+.card__num{font-size:13px}
+.card__meta{font-size:14px}
+
+/* CASE */
+.case{background:var(--blue);color:var(--red);margin-top:80px}
+.case .wrap{padding-top:110px;padding-bottom:110px;display:flex;flex-direction:column;gap:48px}
+.case__head{display:flex;flex-direction:column;gap:16px}
+.roles{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.roles strong{font-family:var(--label);font-weight:700;letter-spacing:.2em;font-size:14px;text-transform:uppercase;margin-right:6px}
+.roles span{padding:8px 16px;border:2px solid var(--red);border-radius:40px;font-family:var(--label);font-weight:500;letter-spacing:.14em;font-size:14px;text-transform:uppercase}
+.case__title{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(48px,9vw,150px);line-height:.92}
+.case__body{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}
+.case__video{position:relative;isolation:isolate;overflow:hidden;flex:999 1 560px;min-width:0;aspect-ratio:16/9;background:var(--red);display:flex;align-items:flex-start;gap:14px;padding:28px;color:var(--white);text-decoration:none}
+.case__video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.case__video::after{content:"";position:absolute;inset:0 0 auto 0;height:40%;background:linear-gradient(to bottom,rgba(40,3,4,.55),rgba(40,3,4,0));z-index:-1}
+.case__video span{font-family:var(--label);font-weight:500;letter-spacing:.2em;font-size:16px;text-transform:uppercase;align-self:center}
+@media (max-width:620px){.case__video{padding:16px}.case__video span{display:none}}
+.case__side{flex:1 1 320px;display:flex;flex-direction:column;gap:32px}
+.case__text{margin:0;font-size:18px;line-height:1.55;font-weight:500}
+.episodes{display:flex;flex-direction:column;border-top:2px solid var(--red)}
+.episodes a{display:flex;justify-content:space-between;align-items:center;min-height:52px;padding:12px 0;border-bottom:1px solid var(--red);text-decoration:none;font-family:var(--label);font-weight:700;font-size:20px;letter-spacing:.05em}
+.episodes a:hover{padding-left:8px;transition:padding .2s}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.stats div{display:flex;flex-direction:column;gap:4px;border-top:2px solid var(--red);padding-top:12px}
+.stats b{font-family:var(--display);font-weight:400;font-size:44px;line-height:1}
+.stats span{font-size:14px;font-weight:500}
+.socials{display:flex;flex-wrap:wrap;gap:12px}
+.socials .pill{font-size:14px;font-weight:500;padding:12px 22px}
+.socials .pill:hover{background:var(--red);color:var(--blue)}
+
+/* PRESS */
+.press{padding-top:120px;display:flex;flex-direction:column;gap:40px}
+.press__list{display:flex;flex-direction:column;border-top:1px solid var(--white)}
+.press__item{display:flex;flex-wrap:wrap;align-items:center;gap:16px 40px;padding:32px 0;border-bottom:1px solid var(--white);text-decoration:none}
+.press__type{flex:0 0 160px;color:var(--blue)}
+.press__main{flex:999 1 420px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.press__name{font-family:var(--label);font-weight:700;font-size:clamp(22px,2.6vw,36px);letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
+.press__sub{font-size:16px;line-height:1.4}
+.press__cta{display:flex;align-items:center;gap:10px;font-family:var(--label);font-weight:500;letter-spacing:.14em;font-size:15px;text-transform:uppercase}
+.badge{padding:8px 16px;background:var(--blue);color:var(--red);border-radius:40px;font-family:var(--label);font-weight:700;letter-spacing:.14em;font-size:13px;text-transform:uppercase}
+
+/* ABOUT */
+.about{padding-top:120px;padding-bottom:120px;display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start}
+.about__photo{flex:1 1 300px;max-width:460px;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--white);transform:rotate(-3deg);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.about__photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.about__text{flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:36px}
+.about__bio{margin:0;font-size:clamp(20px,2vw,26px);line-height:1.45;max-width:720px}
+.services{display:flex;flex-direction:column;gap:18px}
+.services p{margin:0;font-size:18px;line-height:1.5}
+.services ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.services li{border:1px solid var(--white);padding:18px 20px;font-family:var(--label);font-weight:500;font-size:18px;letter-spacing:.05em;text-transform:uppercase}
+@media (max-width:620px){.about__photo{max-width:100%;transform:rotate(-2deg)}}
+
+/* CONTACT */
+.contact{background:var(--red-deep)}
+.contact .wrap{padding-top:120px;padding-bottom:48px;display:flex;flex-direction:column;gap:56px}
+.contact__title{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(52px,11vw,180px);line-height:.92}
+.contact__links{display:flex;flex-wrap:wrap;gap:16px}
+.contact__links .pill{font-size:16px;text-transform:none;letter-spacing:.06em}
+@media (max-width:620px){.contact__links .pill{font-size:14px;letter-spacing:.02em;padding:14px 20px}}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(255,255,255,.3);padding-top:24px;font-size:13px}
+
+/* UP BUTTON */
+.up{position:fixed;right:20px;bottom:20px;z-index:50;box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .25s,transform .25s;font-size:14px;padding:12px 20px}
+.up.show{opacity:1;transform:none;pointer-events:auto}
+
+/* VIDEO MODAL */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:var(--pad);background:rgba(20,2,3,.92)}
+.modal.open{display:flex}
+.modal__box{position:relative;width:min(1200px,100%);aspect-ratio:16/9;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.modal__box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.modal__close{position:absolute;top:-56px;right:0;min-height:44px;min-width:44px;padding:10px 18px;border-radius:40px;border:1px solid var(--white);background:transparent;color:var(--white);font-family:var(--label);letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.modal__close:hover{background:var(--white);color:var(--red)}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="logo" href="#top" aria-label="LÖVUSHKINA OLYA — home">L<span class="o-uml"><span>O</span></span>V</a>
+  <nav class="nav" aria-label="Main">
+    <div class="nav-links" id="nav-links">
+      <a href="#works" data-i18n="navWorks">Works</a>
+      <a href="#case" data-i18n="navCase">Case</a>
+      <a href="#about" data-i18n="navAbout">About</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+    </div>
+    <button class="menu-btn" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <img class="hero__img" src="assets/img/hero.jpg" alt="Illustrated portrait of Olya Lövushkina filming with a phone" fetchpriority="high">
+  <div class="hero__content">
+    <div class="hero__row">
+      <div class="hero__left">
+        <span class="hero__role">AI Director &amp; Filmmaker</span>
+        <a class="pill pill--solid" href="#works">
+          <svg class="play" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg>
+          <span data-i18n="worksBtn">Watch my work</span>
+        </a>
+      </div>
+      <p class="hero__line" data-i18n="bio">Theatre education and experience in film. I combine directing with AI to create films, animation, music videos and series.</p>
+    </div>
+    <h1 class="hero__name" aria-label="LÖVUSHKINA OLYA">L<span class="o-uml"><span>O</span></span>VUSHKINA OLYA</h1>
+  </div>
+</section>
+
+<section class="works wrap" id="works" aria-labelledby="works-title">
+  <h2 class="h2" id="works-title" data-i18n="worksTitle">WORKS</h2>
+  <div class="grid">
+    <a class="card card--red" href="https://youtu.be/kavgEASQnmE" data-yt="kavgEASQnmE">
+      <div class="card__media"><img src="assets/img/inside.jpg" alt="" loading="lazy"><svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg></div>
+      <div class="card__top"><span class="card__title">Inside Her Head</span><span class="card__num">01</span></div>
+      <span class="card__meta" data-i18n="wInside">Animated short</span>
+    </a>
+    <a class="card card--blue" href="https://youtu.be/oYlpBqH66Ac" data-yt="oYlpBqH66Ac">
+      <div class="card__media"><img src="assets/img/witch.jpg" alt="" loading="lazy"><svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg></div>
+      <div class="card__top"><span class="card__title">Witch &amp; Cat</span><span class="card__num">02</span></div>
+      <span class="card__meta" data-i18n="wWitch">Sitcom</span>
+    </a>
+    <a class="card card--white" href="https://youtu.be/EbQj43BY_Sw" data-yt="EbQj43BY_Sw">
+      <div class="card__media"><img src="assets/img/guy.jpg" alt="" loading="lazy"><svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg></div>
+      <div class="card__top"><span class="card__title">Guy Ritchie-style commercial</span><span class="card__num">03</span></div>
+      <span class="card__meta" data-i18n="wGuy">Commercial</span>
+    </a>
+    <a class="card card--red" href="https://www.youtube.com/watch?v=5Jd4iqz0XPE" data-yt="5Jd4iqz0XPE">
+      <div class="card__media"><img src="assets/img/herald.jpg" alt="" loading="lazy"><svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg></div>
+      <div class="card__top"><span class="card__title">The Herald</span><span class="card__num">04</span></div>
+      <span class="card__meta" data-i18n="wSeries">AI Series · The Marauders Untold</span>
+    </a>
+    <a class="card card--blue" href="https://www.youtube.com/watch?v=S3Ms087HQYs" data-yt="S3Ms087HQYs">
+      <div class="card__media"><img src="assets/img/raven.jpg" alt="" loading="lazy"><svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg></div>
+      <div class="card__top"><span class="card__title">The Raven</span><span class="card__num">05</span></div>
+      <span class="card__meta" data-i18n="wSeries">AI Series · The Marauders Untold</span>
+    </a>
+    <a class="card card--white" href="https://www.youtube.com/watch?v=ZrcSrJoXppA" data-yt="ZrcSrJoXppA">
+      <div class="card__media"><img src="assets/img/firstlove.jpg" alt="" loading="lazy" style="object-position:50% 30%"><svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg></div>
+      <div class="card__top"><span class="card__title">First Love</span><span class="card__num">06</span></div>
+      <span class="card__meta" data-i18n="wSeries">AI Series · The Marauders Untold</span>
+    </a>
+    <a class="card card--red" href="https://www.youtube.com/watch?v=eR5lEaFHv4A" data-yt="eR5lEaFHv4A">
+      <div class="card__media"><img src="assets/img/firststep.jpg" alt="" loading="lazy"><svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg></div>
+      <div class="card__top"><span class="card__title">First Step</span><span class="card__num">07</span></div>
+      <span class="card__meta" data-i18n="wSeries">AI Series · The Marauders Untold</span>
+    </a>
+    <a class="card card--blue" href="https://www.youtube.com/watch?v=SbcuIp8xolU" data-yt="SbcuIp8xolU">
+      <div class="card__media"><img src="assets/img/sirius.jpg" alt="" loading="lazy"><svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg></div>
+      <div class="card__top"><span class="card__title">Sirius’s Birthday</span><span class="card__num">08</span></div>
+      <span class="card__meta" data-i18n="wSeries">AI Series · The Marauders Untold</span>
+    </a>
+    <a class="card card--white" href="https://youtu.be/1FdktyjDQK8" data-yt="1FdktyjDQK8">
+      <div class="card__media"><img src="assets/img/stopmotion.jpg" alt="" loading="lazy"><svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg></div>
+      <div class="card__top"><span class="card__title">Stop-Motion Style Animated Short</span><span class="card__num">09</span></div>
+      <span class="card__meta" data-i18n="wStop">Animated short · stop-motion style</span>
+    </a>
+  </div>
+</section>
+
+<section class="case" id="case" aria-labelledby="case-title">
+  <div class="wrap">
+    <div class="case__head">
+      <span class="label" data-i18n="caseKicker">Case · fan series</span>
+      <div class="roles">
+        <strong data-i18n="myRole">My role:</strong>
+        <span data-i18n="r1">Director</span><span data-i18n="r2">Screenwriter</span><span data-i18n="r3">Editor</span><span data-i18n="r4">Co-creator</span>
+      </div>
+      <h2 class="case__title" id="case-title">THE MARAUDERS UNTOLD</h2>
+    </div>
+    <div class="case__body">
+      <a class="case__video" href="https://www.youtube.com/watch?v=5Jd4iqz0XPE" data-yt="5Jd4iqz0XPE">
+        <img src="assets/img/case-herald.jpg" alt="Title frame of the episode “The Herald”" loading="lazy">
+        <svg class="play" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg>
+        <span data-i18n="caseVideo">Watch “The Herald”</span>
+      </a>
+      <div class="case__side">
+        <p class="case__text" data-i18n="caseText">An AI series about the Marauders, created with my friend. A non-commercial fan project based on the Harry Potter universe.</p>
+        <div class="episodes">
+          <a href="https://www.youtube.com/watch?v=5Jd4iqz0XPE" data-yt="5Jd4iqz0XPE">THE HERALD <span aria-hidden="true">→</span></a>
+          <a href="https://www.youtube.com/watch?v=S3Ms087HQYs" data-yt="S3Ms087HQYs">THE RAVEN · HALLOWEEN <span aria-hidden="true">→</span></a>
+          <a href="https://www.youtube.com/watch?v=ZrcSrJoXppA" data-yt="ZrcSrJoXppA">FIRST LOVE <span aria-hidden="true">→</span></a>
+          <a href="https://www.youtube.com/watch?v=eR5lEaFHv4A" data-yt="eR5lEaFHv4A">FIRST STEP <span aria-hidden="true">→</span></a>
+          <a href="https://www.youtube.com/watch?v=SbcuIp8xolU" data-yt="SbcuIp8xolU">SIRIUS’S BIRTHDAY <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="stats">
+          <div><b>3.5M</b><span data-i18n="statViews">views</span></div>
+          <div><b>100K+</b><span data-i18n="statFollowers">followers</span></div>
+        </div>
+        <div class="socials">
+          <a class="pill pill--line" href="https://www.youtube.com/@Marauders.untold" target="_blank" rel="noopener">YouTube</a>
+          <a class="pill pill--line" href="https://www.instagram.com/marauders.untold/" target="_blank" rel="noopener">Instagram</a>
+          <a class="pill pill--line" href="https://www.tiktok.com/@marauders.untold" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="press wrap" id="press" aria-labelledby="press-title">
+  <h2 class="h2" id="press-title" data-i18n="pressTitle">PRESS</h2>
+  <div class="press__list">
+    <a class="press__item" href="https://www.youtube.com/watch?v=1VLe03UAqsY" data-yt="1VLe03UAqsY">
+      <span class="press__type label" data-i18n="pressPodcast">Podcast</span>
+      <span class="press__main">
+        <span class="press__name" data-i18n="podName">Otklonenie ot kanona (Deviation from Canon)</span>
+        <span class="press__sub" data-i18n="podEpisode">Chapter Seven. Fanfiction and Artificial Intelligence</span>
+      </span>
+      <span class="press__cta"><svg class="play" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg><span data-i18n="pressWatch">Watch</span></span>
+    </a>
+    <div class="press__item">
+      <span class="press__type label" data-i18n="pressInterview">Interview</span>
+      <span class="press__main">
+        <span class="press__name">New York Magazine</span>
+        <span class="press__sub" data-i18n="nymText">Interview — publication coming soon</span>
+      </span>
+      <span class="badge" data-i18n="soon">Coming soon</span>
+    </div>
+  </div>
+</section>
+
+<section class="about wrap" id="about" aria-labelledby="about-title">
+  <div class="about__photo"><img src="assets/img/hero.jpg" alt="Illustrated portrait of Olya Lövushkina" loading="lazy"></div>
+  <div class="about__text">
+    <h2 class="h2" id="about-title" data-i18n="aboutTitle">ABOUT</h2>
+    <p class="about__bio" data-i18n="bio">Theatre education and experience in film. I combine directing with AI to create films, animation, music videos and series.</p>
+    <div class="services">
+      <span class="label" data-i18n="servicesLabel">What I do</span>
+      <p data-i18n="services">From concept and script to a finished AI film.</p>
+      <ul>
+        <li data-i18n="s1">Short films</li><li data-i18n="s2">Music videos</li><li data-i18n="s3">Series</li><li data-i18n="s4">Animation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 class="contact__title" id="contact-title" data-i18n="contactTitle">LET’S MAKE A FILM</h2>
+    <div class="contact__links">
+      <a class="pill pill--solid" href="https://www.instagram.com/levushkina.olya/" target="_blank" rel="noopener">Instagram · @levushkina.olya</a>
+      <a class="pill pill--line" href="mailto:ollya.levushkina@gmail.com">Email · ollya.levushkina@gmail.com</a>
+      <a class="pill pill--line" href="https://t.me/LevushkinaOlga" target="_blank" rel="noopener">Telegram · @LevushkinaOlga</a>
+    </div>
+    <div class="footer"><span>© 2026 LÖVUSHKINA OLYA</span><span>AI Director &amp; Filmmaker</span></div>
+  </div>
+</footer>
+
+<a class="pill pill--solid up" href="#top" id="up">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+  <span data-i18n="up">Up</span>
+</a>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Video">
+  <div class="modal__box">
+    <button class="modal__close" type="button" id="modal-close"><span data-i18n="close">Close</span> ✕</button>
+    <div id="modal-player"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var T = {
+    en: {
+      navWorks:'Works', navCase:'Case', navAbout:'About', navContact:'Contact',
+      worksBtn:'Watch my work', worksTitle:'WORKS',
+      bio:'Theatre education and experience in film. I combine directing with AI to create films, animation, music videos and series.',
+      wInside:'Animated short', wWitch:'Sitcom', wGuy:'Commercial', wSeries:'AI Series · The Marauders Untold', wStop:'Animated short · stop-motion style',
+      caseKicker:'Case · fan series', myRole:'My role:', r1:'Director', r2:'Screenwriter', r3:'Editor', r4:'Co-creator',
+      caseVideo:'Watch “The Herald”',
+      caseText:'An AI series about the Marauders, created with my friend. A non-commercial fan project based on the Harry Potter universe.',
+      statViews:'views', statFollowers:'followers',
+      pressTitle:'PRESS', pressPodcast:'Podcast', pressInterview:'Interview', pressWatch:'Watch',
+      podName:'Otklonenie ot kanona (Deviation from Canon)', podEpisode:'Chapter Seven. Fanfiction and Artificial Intelligence',
+      nymText:'Interview — publication coming soon', soon:'Coming soon',
+      aboutTitle:'ABOUT', servicesLabel:'What I do', services:'From concept and script to a finished AI film.',
+      s1:'Short films', s2:'Music videos', s3:'Series', s4:'Animation',
+      contactTitle:'LET’S MAKE A FILM', up:'Up', close:'Close'
+    },
+    ru: {
+      navWorks:'Работы', navCase:'Кейс', navAbout:'Обо мне', navContact:'Контакты',
+      worksBtn:'Смотреть работы', worksTitle:'РАБОТЫ',
+      bio:'Театральное образование и опыт работы в кино. Соединяю режиссуру с возможностями AI и создаю фильмы, анимацию, клипы и сериалы.',
+      wInside:'Анимационный короткий метр', wWitch:'Ситком', wGuy:'Реклама', wSeries:'AI-сериал · The Marauders Untold', wStop:'Анимационный короткий метр · стоп-моушен',
+      caseKicker:'Кейс · фан-сериал', myRole:'Моя роль:', r1:'Режиссёр', r2:'Сценарист', r3:'Монтажёр', r4:'Соавтор проекта',
+      caseVideo:'Смотреть «The Herald»',
+      caseText:'AI-сериал о Мародёрах, который мы создаём вместе с моей подругой. Некоммерческий фан-проект по вселенной Гарри Поттера.',
+      statViews:'просмотров', statFollowers:'подписчиков',
+      pressTitle:'СМИ', pressPodcast:'Подкаст', pressInterview:'Интервью', pressWatch:'Смотреть',
+      podName:'Отклонение от канона', podEpisode:'Глава седьмая. Фанфикшен и искусственный интеллект',
+      nymText:'Интервью — скоро публикация', soon:'Скоро',
+      aboutTitle:'ОБО МНЕ', servicesLabel:'Что я делаю', services:'От идеи и сценария до готового AI-фильма.',
+      s1:'Короткий метр', s2:'Клипы', s3:'Сериалы', s4:'Анимация',
+      contactTitle:'ДАВАЙТЕ СНИМЕМ ФИЛЬМ', up:'Наверх', close:'Закрыть'
+    }
+  };
+
+  function setLang(lang) {
+    var t = T[lang] || T.en;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n');
+      if (t[k] != null) el.textContent = t[k];
+    });
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+    });
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  var initial = saved || ((navigator.language || '').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en');
+  setLang(initial);
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+  });
+
+  // mobile menu
+  var menuBtn = document.querySelector('.menu-btn');
+  var links = document.getElementById('nav-links');
+  menuBtn.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); });
+  });
+
+  // "Up" button appears after the first screen
+  var up = document.getElementById('up');
+  function onScroll() { up.classList.toggle('show', window.scrollY > window.innerHeight * 0.8); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // YouTube videos open in a player on the page
+  var modal = document.getElementById('modal');
+  var player = document.getElementById('modal-player');
+  var closeBtn = document.getElementById('modal-close');
+  var lastFocus = null;
+  function openVideo(id) {
+    lastFocus = document.activeElement;
+    player.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+      '?autoplay=1&rel=0" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeVideo() {
+    modal.classList.remove('open');
+    player.innerHTML = '';
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-yt]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey) return; // let new-tab clicks through
+      e.preventDefault();
+      openVideo(a.getAttribute('data-yt'));
+    });
+  });
+  closeBtn.addEventListener('click', closeVideo);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeVideo(); });
+  modal.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideo(); });
+})();
+</script>
+</body>
+</html>
